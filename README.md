@@ -1136,4 +1136,33 @@ All commands below presume you’re inside `PalmRCL/PalmRCL/wwwroot/docs/palms`.
 
 ---
 
+### Baseline Recovery (Git Tag v1.3-baseline)
+
+If something breaks after running generators/exporters, you can always roll back to the **baseline snapshot**:
+
+- **Detached HEAD (read-only)**  
+  ```powershell
+  git fetch --all --tags
+  git checkout v1.3-baseline
+  ```
+
+- **Safe working branch (recommended)**  
+  ```powershell
+  git fetch --all --tags
+  git checkout -b baseline-work v1.3-baseline
+  ```
+
+- **Verify the tag is still on remote**  
+  ```powershell
+  git ls-remote --tags origin | findstr v1.3-baseline
+  ```
+
+- **Force reset current branch back to baseline** (⚠ destructive — discards local changes)  
+  ```powershell
+  git fetch --all --tags
+  git reset --hard v1.3-baseline
+  ```
+
+---
+
 ###### Copyright © 2025 — All Rights Reserved by Jason Silvestri

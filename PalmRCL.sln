@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{02EA681E
 	ProjectSection(SolutionItems) = preProject
 		tools\Copy-PalmBundleLatest.ps1 = tools\Copy-PalmBundleLatest.ps1
 		tools\normalize-eol.ps1 = tools\normalize-eol.ps1
+		tools\tag-baseline.ps1 = tools\tag-baseline.ps1
 		tools\Validate-StaticWebAssets.ps1 = tools\Validate-StaticWebAssets.ps1
 	EndProjectSection
 EndProject
