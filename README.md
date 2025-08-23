@@ -935,3 +935,205 @@ MIT
 ---
 
 ###### Copyright © 2025 — All Rights Reserved by Jason Silvestri
+
+---
+
+Third version of README.md complete.
+
+# PLM AI Lifecycle Models™ (PaLMs{}™) — PalmRCL (v1.3 Seed)
+
+> **Status:** ✅ Visual Studio solution builds clean with **zero compile errors** because **generators/exporters have NOT been run** (by design).  
+> **OS Target:** Windows 10  
+> **IDE:** Visual Studio 2022 (17.14.x)  
+> **.NET:** 9.0.1 (ASP.NET Core 9.0.1 / Blazor 9.0.1)  
+> **Node:** 20.14.0 • **npm:** 10.8.1
+
+---
+
+## What’s New in v1.3
+
+- Solidified **offline docgen** architecture: **JSON → Markdown → SQL** flows
+- Scripts (TypeScript, ES Modules):  
+  - `scripts/generate-offline.ts` (JSON → docs)  
+  - `scripts/generate-md.ts` (MD-spec → docs)  
+  - `scripts/export-roundtrip.ts` (MD → consolidated JSON bundle + SQL-ready seed)
+- Deterministic **UUID v5** namespace: `6f0e5f9f-7f3a-41bf-b969-9e2b7d2f9b21`
+- Canonical **17 Workflow States**
+- **Normalization rules**: exactly one default transition per gate (auto-enforced in gen/export)
+- **Windows-only EOL normalization** to avoid VS crashes from hidden chars: `tools/normalize-eol.ps1`
+
+---
+
+## Golden Restore Points (Read First)
+
+1) **Attached ZIP (Baseline Snapshot)**  
+   The attached ZIP in this repo/distribution contains the absolute latest files, and the Visual Studio project builds with **no compile errors** because **no generators/exporters have been run** yet (by design). This ZIP is a clean baseline.
+
+2) **Public GitHub Mirror (Baseline)**  
+   Repo: `https://github.com/JasonSilvestri/PalmRCL` (public for now).  
+   This is the **same baseline** as the attached ZIP: the project builds with **no compile errors** in Visual Studio because **no generators/exporters have been run** (by design).  
+   Use this as a stable checkpoint to **revert after any tests** from this point forward.
+
+> **Recommendation:** Tag this baseline in Git (`v1.3-baseline`) so it’s one command to restore:
+> ```bash
+> git tag v1.3-baseline
+> git push origin v1.3-baseline
+> ```
+
+---
+
+## Repository Layout (Key Paths)
+
+> The uploaded ZIP includes a full working tree including `PalmRCL/PalmRCL/wwwroot/docs/palms` and Node workspace files. If you need a quick glance at structure, check `PalmRCLv1.3-zip-summary.txt` (shallow tree + notable files).
+
+- `PalmRCL.sln` — Solution  
+- `PalmRCL/` — Web project (ASP.NET Core)  
+  - `wwwroot/docs/palms/` — offline docs workspace (Node project)  
+    - `package.json` / `tsconfig.json` / `node_modules/`  
+    - `scripts/` — `generate-offline.ts`, `generate-md.ts`, `export-roundtrip.ts`  
+    - `data/` — seeds/specs (JSON/MD)  
+    - `docs/` — generated outputs  
+- `tools/`  
+  - `normalize-eol.ps1` — **Windows** line-ending normalizer (prevents VS hidden-char crashes)
+
+---
+
+## Requirements
+
+- **Windows 10**
+- **Visual Studio 2022** 17.14.x (with .NET 9 workload)
+- **.NET 9.0.1 SDK**
+- **Node.js 20.14.0** and **npm 10.8.1**
+- PowerShell 7.x+ recommended for scripts
+
+> If your environment differs, lock to these versions while validating v1.3 seed.
+
+---
+
+## Setup (Safe Mode — No Generators)
+
+1. **Clone the baseline** (GitHub mirror of the ZIP):
+   ```bash
+   git clone https://github.com/JasonSilvestri/PalmRCL.git
+   cd PalmRCL
+   ```
+2. **Open in Visual Studio** and build the solution.  
+   Expected: **0 compile errors** (because generators/exporters not yet invoked).
+3. Optional (**Strongly Recommended**): Create a tag before any experiments:
+   ```bash
+   git tag v1.3-baseline
+   git push origin v1.3-baseline
+   ```
+
+---
+
+## Revert / Restore Strategy
+
+- **From Git tag**:
+  ```bash
+  git fetch --all --tags
+  git checkout v1.3-baseline
+  ```
+- **From the attached ZIP**:
+  1. Backup current working directory.  
+  2. Extract the ZIP over the repo root (or into a fresh folder).
+  3. Open the solution in Visual Studio and build (should be clean again).
+
+> Keep the attached ZIP and the Git tag as **immutable baselines**. Any test that mutates generated assets can be undone by re‑checking out the tag or re‑extracting the ZIP.
+
+---
+
+## NPM Workflows (Windows)
+
+All commands below presume you’re inside `PalmRCL/PalmRCL/wwwroot/docs/palms`.
+
+> **Safety tip:** Run these only when you’re **ready to generate** artifacts.
+
+- **Install**:
+  ```bash
+  npm ci
+  ```
+
+- **Normalize EOL (Windows only)**:
+  ```bash
+  # from repo root
+  powershell -ExecutionPolicy Bypass -File tools/normalize-eol.ps1 -Root PalmRCL/PalmRCL/wwwroot/docs/palms
+  ```
+
+- **Build TypeScript**:
+  ```bash
+  npm run build
+  ```
+
+- **Generate Markdown from JSON**:
+  ```bash
+  npm run gen:offline     # wraps scripts/generate-offline.ts
+  ```
+
+- **Generate Markdown from MD-spec**:
+  ```bash
+  npm run gen:md          # wraps scripts/generate-md.ts
+  ```
+
+- **Export Roundtrip (MD → JSON bundle + SQL)**:
+  ```bash
+  npm run roundtrip       # wraps scripts/export-roundtrip.ts
+  ```
+
+> Your root `package.json` may also provide convenience metas (e.g., `palms:roundtrip:win`) chaining **EOL → copy → build → gen:md → EOL**. Use the **Windows** one only.
+
+---
+
+## Known Stability Practices
+
+- **EOL normalization first** (Windows-only). Prevents “hidden-char” issues that can crash Visual Studio or corrupt files.
+- **Run Windows-specific scripts only on Windows** (avoid mixed shell runs).
+- **Don’t commit transient generated outputs** until you’re satisfied with diff and integrity.
+- **One default transition per gate** is auto-normalized—don’t hand-edit to add multiple defaults.
+
+---
+
+## Troubleshooting
+
+- **Visual Studio crashes or odd diffs after gen/export**
+  - Run `tools/normalize-eol.ps1` against the docs folder.
+  - Close VS, delete `.vs/`, `bin/`, `obj/`, re-open and rebuild.
+
+- **Generators fail after a clean baseline**
+  - Ensure `npm ci` ran in `wwwroot/docs/palms/`.
+  - Confirm Node 20.14.0 and npm 10.8.1.
+  - Re-check paths for `data/` and `docs/` in scripts.
+
+- **SQL bundle looks off**
+  - Re-run roundtrip exporter and verify that the MD sources follow the spec (front-matter quoting for values with colons, etc.).
+  - Confirm single default gate transition is present after normalization.
+
+---
+
+## Design Rules (Authoritative)
+
+- **UUID v5** deterministic IDs for non-INT entities (namespace above)
+- **Workflow States**: fixed 1–17 (INT)
+- **Gate transitions**: exactly one default per gate (exporter will enforce)
+- **YAML front‑matter**: quote values containing colons or special characters
+- **Windows line endings** in generated assets (normalize as needed)
+
+---
+
+## Roadmap
+
+- Harden `palms:roundtrip:win` metascript and logs
+- Add **git guardrails** (pre‑commit hook to prevent accidental commit of unstable gens)
+- Auto‑tag stable outputs (`v1.3-gen-ok`, etc.)
+- CI job for **Windows** runner that validates the sequence (optional)
+
+---
+
+## License / Status
+
+- Internal development under the **PaLMs{}™** effort.  
+- GitHub mirror currently **public** for testing/logistics; will be privatized later.
+
+---
+
+###### Copyright © 2025 — All Rights Reserved by Jason Silvestri
