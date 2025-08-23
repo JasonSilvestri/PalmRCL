@@ -1,9 +1,9 @@
 ---
 {
-  "type": "LifecyclePhase",
-  "id": "6b9d7cbe-1d2e-4a34-acab-4da793e9f1a1",
-  "name": "Phase 1 - Inception",
-  "slug": "phase-1-inception",
+  "type": "Model",
+  "id": "5cb1c603-f88e-4802-ae2f-6ffa29142dc4",
+  "name": "VisionModel v1",
+  "slug": "visionmodel-v1",
   "parentIds": [],
   "storage": {
     "rootGitHub": "https://github.com/JasonSilvestri/PalmRCL.git",
@@ -14,15 +14,15 @@
     "fileContentPath": "wwwroot/Project/OurFirstPaLM/README.md",
     "filePath": "PalmRCL/wwwroot/Project/OurFirstPaLM/README.md"
   },
-  "generatedAt": "2025-08-23T22:16:51.243Z"
+  "generatedAt": "2025-08-23T22:30:49.832Z"
 }
 ---
-# LifecyclePhase: Phase 1 - Inception (6b9d7cbe-1d2e-4a34-acab-4da793e9f1a1)
+# Model: VisionModel v1 (5cb1c603-f88e-4802-ae2f-6ffa29142dc4)
 
 > **Relation ↔ Mapping**
-> - Lifecycle →◼+← LifecyclePhase (◼=LifecycleLifecyclePhase) [PhaseOrder=1]
-> - LifecyclePhase ↔◼1↔ Workflow (◼=LifecyclePhaseWorkflow) → WF: Inception
-> - LifecyclePhase ↔◼↔ PhaseGate (◼=LifecyclePhaseGate) → Gate: Phase 1 Exit
+> - PaLM{} ↔◼↔ Model  (◼=PaLMModel)
+> - Model ↔◼↔ WorkflowState (◼=ModelWorkflowState): 1, 3
+> - Model ↔◼↔ Lifecycle (◼=ModelLifecycle)
 
 > **Storage Plans**
 > 1. **Root GitHub:** [https://github.com/JasonSilvestri/PalmRCL.git](https://github.com/JasonSilvestri/PalmRCL.git)
@@ -35,11 +35,10 @@
 
 ## Junction shorthand (local view)
 ```plaintext
-Lifecycle →◼+← LifecyclePhase
-LifecyclePhase ↔◼1↔ Workflow
-LifecyclePhase ↔◼↔ PhaseGate
+PaLM{} ↔◼↔ Model
+Model ↔◼↔ WorkflowState
+Model ↔◼↔ Lifecycle
 ```
 
 ## Children
-- [Workflow: WF: Inception](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/workflows/wf-inception-0b5c2a1d-5e64-4b7e-b2ae-0d12a65b94fb.md)
-- [Gate: Gate: Phase 1 Exit](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/gates/gate-phase-1-exit-0f3a6ec3-74c1-4c32-ae3f-1a2f0a4a31e8.md)
+- [Lifecycle: Standard Lifecycle](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/lifecycles/standard-lifecycle-3a4f9a77-3a4c-466f-b03d-0b93df5f17ed.md)

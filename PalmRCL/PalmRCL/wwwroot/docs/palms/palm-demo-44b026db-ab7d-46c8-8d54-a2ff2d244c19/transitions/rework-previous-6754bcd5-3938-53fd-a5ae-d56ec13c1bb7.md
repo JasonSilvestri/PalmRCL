@@ -1,9 +1,9 @@
 ---
 {
-  "type": "LifecyclePhase",
-  "id": "c3bd46b1-8c3f-4f11-9ab5-1324b62b1d9f",
-  "name": "Phase 2 - Training",
-  "slug": "phase-2-training",
+  "type": "GateTransition",
+  "id": "6754bcd5-3938-53fd-a5ae-d56ec13c1bb7",
+  "name": "Rework Previous",
+  "slug": "rework-previous",
   "parentIds": [],
   "storage": {
     "rootGitHub": "https://github.com/JasonSilvestri/PalmRCL.git",
@@ -14,15 +14,15 @@
     "fileContentPath": "wwwroot/Project/OurFirstPaLM/README.md",
     "filePath": "PalmRCL/wwwroot/Project/OurFirstPaLM/README.md"
   },
-  "generatedAt": "2025-08-23T22:16:51.247Z"
+  "generatedAt": "2025-08-23T22:30:49.906Z"
 }
 ---
-# LifecyclePhase: Phase 2 - Training (c3bd46b1-8c3f-4f11-9ab5-1324b62b1d9f)
+# GateTransition: Rework Previous (6754bcd5-3938-53fd-a5ae-d56ec13c1bb7)
 
 > **Relation ↔ Mapping**
-> - Lifecycle →◼+← LifecyclePhase (◼=LifecycleLifecyclePhase) [PhaseOrder=2]
-> - LifecyclePhase ↔◼1↔ Workflow (◼=LifecyclePhaseWorkflow) → WF: Training
-> - LifecyclePhase ↔◼↔ PhaseGate (◼=LifecyclePhaseGate) → (none)
+> - PhaseGate →◼+← GateTransition (◼=PhaseGateTransition)
+> - Target: Relative → Previous (relative)
+> - Priority: 200  •  Default: No
 
 > **Storage Plans**
 > 1. **Root GitHub:** [https://github.com/JasonSilvestri/PalmRCL.git](https://github.com/JasonSilvestri/PalmRCL.git)
@@ -35,10 +35,8 @@
 
 ## Junction shorthand (local view)
 ```plaintext
-Lifecycle →◼+← LifecyclePhase
-LifecyclePhase ↔◼1↔ Workflow
-LifecyclePhase ↔◼↔ PhaseGate
+PhaseGate →◼+← GateTransition
 ```
 
 ## Children
-- [Workflow: WF: Training](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/workflows/wf-training-f9a5c3b1-4c5e-4a6f-9a97-9f0f11dc1a2e.md)
+_(none)_

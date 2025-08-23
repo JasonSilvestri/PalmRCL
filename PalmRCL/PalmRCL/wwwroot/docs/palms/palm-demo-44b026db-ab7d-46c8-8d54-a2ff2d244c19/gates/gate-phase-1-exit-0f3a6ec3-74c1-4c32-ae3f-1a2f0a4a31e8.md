@@ -1,9 +1,9 @@
 ---
 {
-  "type": "Workflow",
-  "id": "0b5c2a1d-5e64-4b7e-b2ae-0d12a65b94fb",
-  "name": "WF: Inception",
-  "slug": "wf-inception",
+  "type": "PhaseGate",
+  "id": "0f3a6ec3-74c1-4c32-ae3f-1a2f0a4a31e8",
+  "name": "Gate: Phase 1 Exit",
+  "slug": "gate-phase-1-exit",
   "parentIds": [],
   "storage": {
     "rootGitHub": "https://github.com/JasonSilvestri/PalmRCL.git",
@@ -14,14 +14,15 @@
     "fileContentPath": "wwwroot/Project/OurFirstPaLM/README.md",
     "filePath": "PalmRCL/wwwroot/Project/OurFirstPaLM/README.md"
   },
-  "generatedAt": "2025-08-23T22:16:51.252Z"
+  "generatedAt": "2025-08-23T22:30:49.888Z"
 }
 ---
-# Workflow: WF: Inception (0b5c2a1d-5e64-4b7e-b2ae-0d12a65b94fb)
+# PhaseGate: Gate: Phase 1 Exit (0f3a6ec3-74c1-4c32-ae3f-1a2f0a4a31e8)
 
 > **Relation ↔ Mapping**
-> - LifecyclePhase ↔◼1↔ Workflow (◼=LifecyclePhaseWorkflow)
-> - Workflow →◼+← WorkflowStep (◼=WorkflowWorkflowStep) [orders: 1, 2]
+> - LifecyclePhase ↔◼↔ PhaseGate (◼=LifecyclePhaseGate)
+> - WorkflowStep ↔◼↔ PhaseGate (◼=WorkflowStepGate)
+> - PhaseGate →◼+← GateTransition (◼=PhaseGateTransition) [2 transitions]
 
 > **Storage Plans**
 > 1. **Root GitHub:** [https://github.com/JasonSilvestri/PalmRCL.git](https://github.com/JasonSilvestri/PalmRCL.git)
@@ -34,10 +35,11 @@
 
 ## Junction shorthand (local view)
 ```plaintext
-LifecyclePhase ↔◼1↔ Workflow
-Workflow →◼+← WorkflowStep
+LifecyclePhase ↔◼↔ PhaseGate
+WorkflowStep ↔◼↔ PhaseGate
+PhaseGate →◼+← GateTransition
 ```
 
 ## Children
-- [01. Collect Inputs](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/steps/01-collect-inputs-4d7f865e-8f8d-4fc7-a1bf-988c5550a1e0.md)
-- [02. Train Model](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/steps/02-train-model-2f4b1de2-7c9a-4a9e-9b8a-1345b7a8e909.md)
+- [Transition: Pass to Phase 2](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/transitions/pass-to-phase-2-eac873ea-bc29-5787-8c1c-27180cdebd18.md)
+- [Transition: Next](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/transitions/next-4492aa32-3d94-5e1e-818d-e3240ae36a5b.md)

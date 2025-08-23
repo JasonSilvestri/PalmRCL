@@ -1,9 +1,9 @@
 ---
 {
-  "type": "Model",
-  "id": "5cb1c603-f88e-4802-ae2f-6ffa29142dc4",
-  "name": "VisionModel v1",
-  "slug": "visionmodel-v1",
+  "type": "WorkflowStep",
+  "id": "2f4b1de2-7c9a-4a9e-9b8a-1345b7a8e909",
+  "name": "Train Model",
+  "slug": "train-model",
   "parentIds": [],
   "storage": {
     "rootGitHub": "https://github.com/JasonSilvestri/PalmRCL.git",
@@ -14,15 +14,14 @@
     "fileContentPath": "wwwroot/Project/OurFirstPaLM/README.md",
     "filePath": "PalmRCL/wwwroot/Project/OurFirstPaLM/README.md"
   },
-  "generatedAt": "2025-08-23T22:16:51.233Z"
+  "generatedAt": "2025-08-23T22:30:49.879Z"
 }
 ---
-# Model: VisionModel v1 (5cb1c603-f88e-4802-ae2f-6ffa29142dc4)
+# WorkflowStep: Train Model (2f4b1de2-7c9a-4a9e-9b8a-1345b7a8e909)
 
 > **Relation ↔ Mapping**
-> - PaLM{} ↔◼↔ Model  (◼=PaLMModel)
-> - Model ↔◼↔ WorkflowState (◼=ModelWorkflowState): 1, 3
-> - Model ↔◼↔ Lifecycle (◼=ModelLifecycle)
+> - Workflow →◼+← WorkflowStep (◼=WorkflowWorkflowStep) [StepOrder=2]
+> - WorkflowStep ↔◼↔ PhaseGate (◼=WorkflowStepGate) → Gate: After Training Step
 
 > **Storage Plans**
 > 1. **Root GitHub:** [https://github.com/JasonSilvestri/PalmRCL.git](https://github.com/JasonSilvestri/PalmRCL.git)
@@ -35,10 +34,9 @@
 
 ## Junction shorthand (local view)
 ```plaintext
-PaLM{} ↔◼↔ Model
-Model ↔◼↔ WorkflowState
-Model ↔◼↔ Lifecycle
+Workflow →◼+← WorkflowStep
+WorkflowStep ↔◼↔ PhaseGate
 ```
 
 ## Children
-- [Lifecycle: Standard Lifecycle](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/lifecycles/standard-lifecycle-3a4f9a77-3a4c-466f-b03d-0b93df5f17ed.md)
+- [Gate: Gate: After Training Step](/docs/palms/palm-demo-44b026db-ab7d-46c8-8d54-a2ff2d244c19/gates/gate-after-training-step-a010f2b2-3452-41b9-ad4f-240e2b71c0c7.md)

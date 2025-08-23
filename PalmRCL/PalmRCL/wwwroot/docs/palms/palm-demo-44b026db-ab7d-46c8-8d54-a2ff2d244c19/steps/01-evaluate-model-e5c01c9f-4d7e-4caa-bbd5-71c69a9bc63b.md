@@ -1,9 +1,9 @@
 ---
 {
-  "type": "GateTransition",
-  "id": "eac873ea-bc29-5787-8c1c-27180cdebd18",
-  "name": "Pass to Phase 2",
-  "slug": "pass-to-phase-2",
+  "type": "WorkflowStep",
+  "id": "e5c01c9f-4d7e-4caa-bbd5-71c69a9bc63b",
+  "name": "Evaluate Model",
+  "slug": "evaluate-model",
   "parentIds": [],
   "storage": {
     "rootGitHub": "https://github.com/JasonSilvestri/PalmRCL.git",
@@ -14,15 +14,14 @@
     "fileContentPath": "wwwroot/Project/OurFirstPaLM/README.md",
     "filePath": "PalmRCL/wwwroot/Project/OurFirstPaLM/README.md"
   },
-  "generatedAt": "2025-08-23T22:16:51.307Z"
+  "generatedAt": "2025-08-23T22:30:49.875Z"
 }
 ---
-# GateTransition: Pass to Phase 2 (eac873ea-bc29-5787-8c1c-27180cdebd18)
+# WorkflowStep: Evaluate Model (e5c01c9f-4d7e-4caa-bbd5-71c69a9bc63b)
 
 > **Relation ↔ Mapping**
-> - PhaseGate →◼+← GateTransition (◼=PhaseGateTransition)
-> - Target: Absolute → Phase c3bd46b1-8c3f-4f11-9ab5-1324b62b1d9f
-> - Priority: 10  •  Default: No
+> - Workflow →◼+← WorkflowStep (◼=WorkflowWorkflowStep) [StepOrder=1]
+> - WorkflowStep ↔◼↔ PhaseGate (◼=WorkflowStepGate) → (none)
 
 > **Storage Plans**
 > 1. **Root GitHub:** [https://github.com/JasonSilvestri/PalmRCL.git](https://github.com/JasonSilvestri/PalmRCL.git)
@@ -35,7 +34,8 @@
 
 ## Junction shorthand (local view)
 ```plaintext
-PhaseGate →◼+← GateTransition
+Workflow →◼+← WorkflowStep
+WorkflowStep ↔◼↔ PhaseGate
 ```
 
 ## Children
