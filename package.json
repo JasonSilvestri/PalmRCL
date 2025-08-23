@@ -1,0 +1,15 @@
+{
+  "name": "solution-runner",
+  "private": true,
+  "scripts": {
+    "palms:eol:docs": "powershell -ExecutionPolicy Bypass -File tools/normalize-eol.ps1 -Root PalmRCL/wwwroot/docs/palms",
+    "palms:copy:latest": "powershell -ExecutionPolicy Bypass -File tools/Copy-PalmBundleLatest.ps1 -DocsRoot PalmRCL/wwwroot/docs/palms",
+    "palms:build": "npm --prefix PalmRCL/wwwroot/docs/palms run build",
+    "palms:gen:md": "npm --prefix PalmRCL/wwwroot/docs/palms run gen:md",
+    "palms:gen:json": "npm --prefix PalmRCL/wwwroot/docs/palms run gen:json",
+    "palms:gen:all": "npm --prefix PalmRCL/wwwroot/docs/palms run gen:all",
+    "palms:export": "npm --prefix PalmRCL/wwwroot/docs/palms run export",
+    "palms:roundtrip:win": "npm run palms:eol:docs && npm run palms:copy:latest && npm run palms:build && npm run palms:gen:md && npm run palms:eol:docs",
+    "palms:scan:static": "powershell -ExecutionPolicy Bypass -File tools/Validate-StaticWebAssets.ps1 -Wwwroot PalmRCL\\wwwroot -ProjectDir PalmRCL"
+  }
+}

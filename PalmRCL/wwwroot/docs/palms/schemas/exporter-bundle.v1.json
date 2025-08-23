@@ -1,0 +1,281 @@
+{
+  "$id": "https://palms.local/schemas/exporter-bundle.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PaLMs{}™ Exporter Bundle (v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "generated_at",
+    "palms",
+    "models",
+    "palm_models",
+    "lifecycles",
+    "phases",
+    "workflows",
+    "steps",
+    "gates",
+    "transitions",
+    "states",
+    "model_states"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "palms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "id", "slug", "name", "natural_key" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "natural_key": { "type": "string" }
+        }
+      }
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "id", "name", "natural_key" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": { "type": "string" },
+          "natural_key": { "type": "string" }
+        }
+      }
+    },
+    "palm_models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "palm_id", "model_id" ],
+        "properties": {
+          "palm_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "model_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    },
+    "lifecycles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "id", "palm_id", "name", "natural_key" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "palm_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": { "type": "string" },
+          "natural_key": { "type": "string" }
+        }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "id", "lifecycle_id", "position", "name", "natural_key" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "lifecycle_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": { "type": "string" },
+          "natural_key": { "type": "string" }
+        }
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "id", "phase_id", "name", "natural_key" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "phase_id": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              { "type": "null" }
+            ]
+          },
+          "name": { "type": "string" },
+          "natural_key": { "type": "string" }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "id", "workflow_id", "position", "name", "natural_key" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "workflow_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": { "type": "string" },
+          "natural_key": { "type": "string" }
+        }
+      }
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "id", "anchor_type", "anchor_id", "name", "natural_key" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "anchor_type": { "enum": [ "phase", "step" ] },
+          "anchor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": { "type": "string" },
+          "natural_key": { "type": "string" }
+        }
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "id", "gate_id", "type", "target_phase_id", "target_step_id", "direction", "is_default", "natural_key" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "gate_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": { "enum": [ "absolute", "relative" ] },
+          "target_phase_id": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              { "type": "null" }
+            ]
+          },
+          "target_step_id": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              { "type": "null" }
+            ]
+          },
+          "direction": {
+            "oneOf": [
+              { "enum": [ "Next", "Previous" ] },
+              { "type": "null" }
+            ]
+          },
+          "is_default": { "type": "boolean" },
+          "natural_key": { "type": "string" }
+        }
+      }
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "id", "code", "name", "ordinal", "natural_key" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Z0-9_]+$"
+          },
+          "name": { "type": "string" },
+          "ordinal": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "natural_key": { "type": "string" }
+        }
+      }
+    },
+    "model_states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "model_id", "state_id" ],
+        "properties": {
+          "model_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "name": "Started",
+    "description": "Process or action has been started."
+  },
+  {
+    "id": 2,
+    "name": "Skipped",
+    "description": "Skipped because end result exists or process unnecessary."
+  },
+  {
+    "id": 3,
+    "name": "Pending",
+    "description": "Started and awaiting action."
+  },
+  {
+    "id": 4,
+    "name": "Expired",
+    "description": "Started and acted upon, then expired before further action."
+  },
+  {
+    "id": 5,
+    "name": "Rejected",
+    "description": "Started and acted upon, but rejected."
+  },
+  {
+    "id": 6,
+    "name": "Failed",
+    "description": "Failed to complete."
+  },
+  {
+    "id": 7,
+    "name": "Approved",
+    "description": "Started, acted upon, then approved."
+  },
+  {
+    "id": 8,
+    "name": "Completed",
+    "description": "Started, acted upon, and completed."
+  },
+  {
+    "id": 9,
+    "name": "Sent",
+    "description": "Sent, awaiting receipt."
+  },
+  {
+    "id": 10,
+    "name": "Received",
+    "description": "Received after being sent."
+  },
+  {
+    "id": 11,
+    "name": "Under Review",
+    "description": "Awaiting action after leaving pending state."
+  },
+  {
+    "id": 12,
+    "name": "Soft Delete",
+    "description": "Marked for deletion, kept for history."
+  },
+  {
+    "id": 13,
+    "name": "Hard Delete",
+    "description": "Marked for permanent deletion."
+  },
+  {
+    "id": 14,
+    "name": "Unknown",
+    "description": "Initiated but no outcome."
+  },
+  {
+    "id": 15,
+    "name": "Null or Empty",
+    "description": "Null, empty, or non-existent result."
+  },
+  {
+    "id": 16,
+    "name": "Active",
+    "description": "Active result."
+  },
+  {
+    "id": 17,
+    "name": "Research",
+    "description": "Lumina is researching the action item."
+  }
+]

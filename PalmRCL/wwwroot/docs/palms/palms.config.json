@@ -1,0 +1,14 @@
+{
+  "storage": {
+    "rootGitHub": "https://github.com/JasonSilvestri/PalmRCL.git",
+    "rootWebTree": "https://github.com/JasonSilvestri/PalmRCL/tree/master/PalmRCL",
+    "rawPrefix": "https://raw.githubusercontent.com/JasonSilvestri/PalmRCL/master/PalmRCL",
+    "documentsRoot": "PalmRCL/wwwroot/documents",
+    "cameraRoot": "PalmRCL/wwwroot/Videos/Camera",
+    "fileContentPath": "wwwroot/Project/OurFirstPaLM/README.md",
+    "filePath": "PalmRCL/wwwroot/Project/OurFirstPaLM/README.md"
+  },
+  "namespaceUUID": "6f0e5f9f-7f3a-41bf-b969-9e2b7d2f9b21",
+  "outDir": ".",
+  "indexHeader": "# PLM AI Lifecycle Models™ - PaLMs{}™"
+}
