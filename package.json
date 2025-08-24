@@ -6,6 +6,7 @@
     "palms:copy:latest": "powershell -ExecutionPolicy Bypass -File tools/Copy-PalmBundleLatest.ps1 -DocsRoot PalmRCL/PalmRCL/wwwroot/docs/palms",
     "palms:build": "npm --prefix PalmRCL/PalmRCL/wwwroot/docs/palms run build",
     "palms:gen:md": "npm --prefix PalmRCL/PalmRCL/wwwroot/docs/palms run gen:md",
+    "palms:verify": "powershell -ExecutionPolicy Bypass -File tools/verify-paths.ps1",
     "palms:roundtrip:win": "npm run palms:eol:docs && npm run palms:copy:latest && npm run palms:build && npm run palms:gen:md && npm run palms:eol:docs"
   }
 }
