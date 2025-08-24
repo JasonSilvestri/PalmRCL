@@ -61,3 +61,15 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+
+#PaLM{}s
+###############################################################################
+
+*.md    text eol=crlf
+*.ps1   text eol=crlf
+*.ts    text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
